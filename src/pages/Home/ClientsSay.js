@@ -55,7 +55,7 @@ function ClientsSay() {
           modules={[Pagination, Navigation]}
         >
           {reviews.map((item) => (
-            <SwiperSlide className="py-10">
+            <SwiperSlide key={item.id} className="py-10">
               <Review key={item.id} reviewItem={item} />
             </SwiperSlide>
           ))}

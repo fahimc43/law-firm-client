@@ -68,7 +68,7 @@ function Services() {
       <div className="flex flex-col justify-center items-center">
         <h6 className="uppercase font-bold text-sm text-primary">what we do</h6>
         <h2 className="font-bold text-4xl py-5">Our Services</h2>
-        <p className="text-md text-center">
+        <p className="text-md text-center mb-5">
           In order to ensure the quality of service in the field of corruption
           <br />
           practices, we have assembled an experienced team.
