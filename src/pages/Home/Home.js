@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Shared/Footer";
-import Appointment from "./Appointment";
+import Appointment from "./MakeAppointment";
 import Banner from "./Banner";
 import ClientsSay from "./ClientsSay";
 import Consultation from "./Consultation";

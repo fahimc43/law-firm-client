@@ -5,7 +5,7 @@ function Navbar() {
   const menuItem = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/appointment">Appointment</Link>

@@ -5,7 +5,7 @@ import ButtonBox from "./ButtonBox";
 
 function Footer() {
   return (
-    <div className="mt-20">
+    <div className=" mt-28">
       <div className="min-h-[400px] bg-[#1d1d1d] opacity-95">
         <footer className="footer py-10 px-20">
           <div className=" w-48">
@@ -108,17 +108,23 @@ function Footer() {
         </footer>
       </div>
 
-      <footer className="footer px-10 py-10 bg-[#1d1d1d] text-slate-50">
+      <footer className="footer px-10 py-10 bg-[#1d1d1d] text-slate-400">
         <div className="items-center grid-flow-col">
           <h3>Copyright © 2022 fahim chowdhury , All Right Reserved</h3>
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
-            <Link to="/">Home</Link>
+            <Link to="/" className=" hover:text-slate-50">
+              Home
+            </Link>
             <span>|</span>
-            <Link to="/">Services</Link>
+            <Link to="/" className=" hover:text-slate-50">
+              Services
+            </Link>
             <span>|</span>
-            <Link to="/">Careers</Link>
+            <Link to="/" className=" hover:text-slate-50">
+              Careers
+            </Link>
           </div>
         </div>
       </footer>

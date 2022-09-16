@@ -40,7 +40,7 @@ function Consultation() {
                 <div className=" grid lg:grid-cols-2 gap-5">
                   <label className="input-group">
                     <span>Case</span>
-                    <select className="select w-48">
+                    <select className="select w-52">
                       <option disabled>Legal Topics</option>
                       <option>Corporate Law</option>
                       <option>Criminal Law</option>

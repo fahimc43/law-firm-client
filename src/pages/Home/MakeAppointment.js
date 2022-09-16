@@ -2,7 +2,7 @@ import React from "react";
 import columnPhoto from "../../image/bg-column.png";
 import ButtonBox from "../Shared/ButtonBox";
 
-function Appointment() {
+function MakeAppointment() {
   return (
     <div className="flex flex-col bg-secondary justify-center items-center mt-32 lg:flex-row px-10 py-10 space-y-4">
       <div className="flex-1">
@@ -26,4 +26,4 @@ function Appointment() {
   );
 }
 
-export default Appointment;
+export default MakeAppointment;
