@@ -6,7 +6,7 @@ function Banner() {
   return (
     <div>
       <div className="hero min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row-reverse mt-16">
           <div className="px-10">
             <img
               src={JusticImg}

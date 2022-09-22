@@ -1,6 +1,6 @@
 import React from "react";
 
-function ButtonBox({ children }) {
+function ButtonBox({ children, disabled }) {
   return <button className="btn btn-primary text-white">{children}</button>;
 }
 
