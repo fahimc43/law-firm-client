@@ -1,13 +1,46 @@
 import { format } from "date-fns";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
 function AppointmentModal({ serviceItem, date, setServiceItem }) {
-  const { name, slots } = serviceItem;
+  const { _id, name, slots } = serviceItem;
+  const [user] = useAuthState(auth);
+  const formattedDate = format(date, "PP");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.slot.value);
-    setServiceItem(null);
+    const slot = e.target.slot.value;
+    const booking = {
+      serviceItemId: _id,
+      serviceItem: name,
+      date: formattedDate,
+      slot,
+      clientName: user.displayName,
+      clientEmail: user.email,
+      phone: e.target.phone.value,
+    };
+
+    fetch("http://localhost:5000/api/v1/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "Success") {
+          toast(`Appointment is set, ${formattedDate} at ${slot}`);
+        } else if (data.status === "fail") {
+          toast(
+            `Already have and Appointment on, ${data?.booking?.date} at ${data?.booking?.slot}`
+          );
+        }
+        console.log(data);
+        setServiceItem(null);
+      });
   };
   return (
     <div>
@@ -37,20 +70,22 @@ function AppointmentModal({ serviceItem, date, setServiceItem }) {
               name="slot"
               className="select select-bordered w-full max-w-xs"
             >
-              {slots.map((slot) => (
-                <option key={slot}>{slot}</option>
+              {slots.map((slot, index) => (
+                <option key={index}>{slot}</option>
               ))}
             </select>
             <input
               name="name"
               type="text"
-              placeholder="Your name"
+              disabled
+              value={user?.displayName}
               className="input input-bordered w-full max-w-xs"
             />
             <input
               name="email"
               type="email"
-              placeholder="Your email"
+              disabled
+              value={user?.email}
               className="input input-bordered w-full max-w-xs"
             />
             <input
