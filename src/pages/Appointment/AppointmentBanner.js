@@ -70,37 +70,3 @@ function AppointmentBanner({ date, setDate }) {
 }
 
 export default AppointmentBanner;
-
-//     <div className="hero min-h-screen">
-//     <div className="hero-content flex-col lg:flex-row-reverse">
-//       <div className="text-center lg:text-left px-10">
-//         <h1 className="text-5xl font-bold">
-//           Appointments available upon request
-//         </h1>
-//         <p className="py-6 text-lg">
-//           We prefer doing to talking (except in court), we take the bull by
-//           the horns and give you clear and practical advice. Personal, to
-//           the point and in plain language. Any questions? Feel free to
-//           select your schedule.
-//         </p>
-//       </div>
-//       <div className=" px-10">
-//         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-//           <div className="card-body">
-//             <DayPicker
-//               styles={{
-//                 caption: { color: "#c18f59" },
-//               }}
-//               modifiersClassNames={{
-//                 selected: "my-selected",
-//                 today: "my-today",
-//               }}
-//               mode="single"
-//               selected={date}
-//               onSelect={setDate}
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   </div>

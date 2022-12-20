@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
 
-function AppointmentModal({ serviceItem, date, setServiceItem }) {
+function AppointmentModal({ serviceItem, date, setServiceItem, refetch }) {
   const { _id, name, slots } = serviceItem;
   const [user] = useAuthState(auth);
   const formattedDate = format(date, "PP");
@@ -22,7 +22,7 @@ function AppointmentModal({ serviceItem, date, setServiceItem }) {
       phone: e.target.phone.value,
     };
 
-    fetch("http://localhost:5000/api/v1/booking", {
+    fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,14 +31,15 @@ function AppointmentModal({ serviceItem, date, setServiceItem }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status === "Success") {
-          toast(`Appointment is set, ${formattedDate} at ${slot}`);
-        } else if (data.status === "fail") {
-          toast(
+        console.log(data);
+        if (data.success) {
+          toast.success(`Appointment is set, ${formattedDate} at ${slot}`);
+        } else {
+          toast.warn(
             `Already have and Appointment on, ${data?.booking?.date} at ${data?.booking?.slot}`
           );
         }
-        console.log(data);
+        refetch();
         setServiceItem(null);
       });
   };

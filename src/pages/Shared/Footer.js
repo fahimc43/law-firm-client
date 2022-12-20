@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import footerBg from "../../image/slide-3.jpg";
 import ButtonBox from "./ButtonBox";
 
 function Footer() {

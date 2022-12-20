@@ -76,9 +76,7 @@ function Services() {
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {serviceData.map((data) => (
-          <Service key={data.id} serviceDetail={data}>
-            {data.icon}
-          </Service>
+          <Service key={data.id} serviceDetail={data} />
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useToken from "../../hook/useToken";
 import { useForm } from "react-hook-form";
 import {
   useCreateUserWithEmailAndPassword,
@@ -6,7 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../src/firebase.init";
 import Loading from "../Shared/Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -18,6 +19,16 @@ function SignUp() {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const [token] = useToken(user);
+  // console.log("data inside useToken", token);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate("/appointment");
+    }
+  }, [navigate, token]);
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
@@ -37,9 +48,10 @@ function SignUp() {
     );
   }
 
-  if (user) {
-    console.log(user);
-  }
+  // if (user) {
+  //   console.log(user);
+  // }
+
   return (
     <div className="flex h-screen justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">

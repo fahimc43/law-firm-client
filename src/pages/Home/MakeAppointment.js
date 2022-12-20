@@ -9,7 +9,7 @@ function MakeAppointment() {
         <img
           className="rounded-lg mt-[-80px] lg:mt-0"
           src={columnPhoto}
-          alt=""
+          alt="columnPhoto"
         />
       </div>
       <div className="flex-1 text-white space-y-4 ">

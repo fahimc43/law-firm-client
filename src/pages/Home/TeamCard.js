@@ -3,6 +3,7 @@ import styles from "../../styles/teamCard.module.css";
 import iconFb from "../../image/icons8-facebook.svg";
 import iconInst from "../../image/icons8-instagram.svg";
 import iconTwitt from "../../image/icons8-twitter.svg";
+import { Link } from "react-router-dom";
 
 function TeamCard(props) {
   const { img, name, title, detail } = props.teamItem;
@@ -24,9 +25,15 @@ function TeamCard(props) {
 
         <p>{detail}</p>
         <div className="card-actions justify-start">
-          <img src={iconFb} alt="icon" />
-          <img src={iconInst} alt="icon" />
-          <img src={iconTwitt} alt="icon" />
+          <Link to="/">
+            <img src={iconFb} alt="icon" />
+          </Link>
+          <Link to="/">
+            <img src={iconInst} alt="icon" />
+          </Link>
+          <Link to="/">
+            <img src={iconTwitt} alt="icon" />
+          </Link>
         </div>
       </div>
     </div>
