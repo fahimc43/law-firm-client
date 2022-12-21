@@ -19,6 +19,7 @@ function AllUsers() {
   if (isLoading) {
     return <Loading />;
   }
+  console.log("users", users);
   return (
     <div>
       <h2 className=" text-2xl text-primary font-bold my-6">All Users</h2>

@@ -14,13 +14,14 @@ function SignUp() {
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+  const [token] = useToken(user);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [token] = useToken(user);
   // console.log("data inside useToken", token);
   let navigate = useNavigate();
 

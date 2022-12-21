@@ -5,8 +5,6 @@ import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 
 function MyAppointment() {
   const [user] = useAuthState(auth);
