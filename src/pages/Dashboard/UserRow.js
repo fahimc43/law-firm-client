@@ -2,8 +2,8 @@ import React from "react";
 import { toast } from "react-toastify";
 
 function UserRow({ index, user, refetch }) {
-  const { email, role, displayName } = user;
-  console.log(user);
+  const { email, role } = user;
+
   const makeAdmin = () => {
     fetch(`http://localhost:5000/users/admin/${email}`, {
       method: "PUT",
@@ -24,6 +24,23 @@ function UserRow({ index, user, refetch }) {
         }
       });
   };
+
+  const deleteUser = () => {
+    console.log(email);
+    fetch(`http://localhost:5000/users/${email}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success(`Yas user email 📌${email} is delete Successfully`);
+        }
+        refetch();
+      });
+  };
   return (
     <tr>
       <th>{index + 1}</th>
@@ -39,7 +56,9 @@ function UserRow({ index, user, refetch }) {
         )}
       </td>
       <td>
-        <button className="btn btn-xs">Remove User</button>
+        <button onClick={deleteUser} className="btn btn-xs">
+          Remove User
+        </button>
       </td>
     </tr>
   );

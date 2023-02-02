@@ -12,6 +12,8 @@ import MyAppointment from "./pages/Dashboard/MyAppointment";
 import MyReview from "./pages/Dashboard/MyReview";
 import AllUsers from "./pages/Dashboard/AllUsers";
 import RequireAdmin from "./pages/Login/RequireAdmin";
+import AddServices from "./pages/Dashboard/AddServices";
+import ManageService from "./pages/Dashboard/ManageService";
 function App() {
   return (
     <div>
@@ -27,6 +29,7 @@ function App() {
           }
         />
         <Route
+          exact
           path="dashboard"
           element={
             <RequireAuth>
@@ -41,6 +44,22 @@ function App() {
             element={
               <RequireAdmin>
                 <AllUsers />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="services"
+            element={
+              <RequireAdmin>
+                <AddServices />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageService"
+            element={
+              <RequireAdmin>
+                <ManageService />
               </RequireAdmin>
             }
           />

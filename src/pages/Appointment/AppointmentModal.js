@@ -31,7 +31,7 @@ function AppointmentModal({ serviceItem, date, setServiceItem, refetch }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log("booking data", data);
         if (data.success) {
           toast.success(`Appointment is set, ${formattedDate} at ${slot}`);
         } else {

@@ -3,7 +3,7 @@ import library from "../../image/library.png";
 
 function Consultation() {
   return (
-    <div className="mb-16">
+    <div className="mb-16" id="consultation">
       <div
         className="hero min-h-[600px]"
         style={{ backgroundImage: `url(${library})` }}

@@ -1,6 +1,7 @@
 import people1 from "../image/testimonials-3.png";
 import people2 from "../image/testimonials-4.png";
 import people3 from "../image/testimonials-2.png";
+import people4 from "../image/Melanie.png";
 
 const reviews = [
   {
@@ -33,7 +34,7 @@ const reviews = [
     country: "California",
     review:
       "I have been surrounded by the most caring lawyers, by agents who are willing to risk their lives for others.",
-    img: people1,
+    img: people4,
   },
   {
     id: 5,

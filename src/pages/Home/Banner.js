@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import JusticImg from "../../image/lady-justic.png";
 import ButtonBox from "../Shared/ButtonBox";
 
@@ -25,7 +26,9 @@ function Banner() {
               collision course because both sides hew closely to contradictory
               readings of international law.
             </p>
-            <ButtonBox>Contact Now</ButtonBox>
+            <ButtonBox>
+              <Link to="/signUp">Create an account</Link>
+            </ButtonBox>
           </div>
         </div>
       </div>

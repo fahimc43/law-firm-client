@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import columnPhoto from "../../image/bg-column.png";
 import ButtonBox from "../Shared/ButtonBox";
 
@@ -20,7 +21,9 @@ function MakeAppointment() {
           rankings in the competitive market. Their responsive support team
           provides us with current recommendations.
         </p>
-        <ButtonBox>Appointment</ButtonBox>
+        <ButtonBox>
+          <Link to="/appointment">Appointment</Link>
+        </ButtonBox>
       </div>
     </div>
   );

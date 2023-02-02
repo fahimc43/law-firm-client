@@ -32,28 +32,6 @@ function MyAppointment() {
 
   const appointments = data;
 
-  // const [appointments, setAppointments] = useState([]);
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:5000/booking?client=${user.email}`, {
-  //       method: "GET",
-  //       headers: {
-  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     })
-  //       .then((res) => {
-  //         console.log("res", res);
-  //         if (res.status === 401 || res.status === 403) {
-  //           signOut(auth);
-  //           localStorage.removeItem("accessToken");
-  //           navigate("/");
-  //         }
-  //         return res.json();
-  //       })
-  //       .then((data) => setAppointments(data));
-  //   }
-  // }, [user, navigate]);
-
   return (
     <div>
       <h2 className=" text-2xl text-primary font-bold my-6">My Appointment</h2>
@@ -69,7 +47,7 @@ function MyAppointment() {
             </tr>
           </thead>
           <tbody>
-            {appointments.map((a, index) => (
+            {appointments?.map((a, index) => (
               <tr key={index}>
                 <th>{index + 1}</th>
                 <td>{a.clientName}</td>

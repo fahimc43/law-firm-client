@@ -4,14 +4,25 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import reviews from "../../data/reviewData";
+// import reviews from "../../data/reviewData";
 import { PaperClipIcon } from "@heroicons/react/24/outline";
 import Review from "./Review";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
 
 function ClientsSay() {
+  const { data: reviews, isLoading } = useQuery("reviews", () =>
+    fetch("http://localhost:5000/reviewers").then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <section className="my-32 px-10">
+    <section id="review" className="py-32 px-10">
       <div className="flex justify-between">
+        <img src="" alt="" />
         <div>
           <h2 className="text-3xl font-semibold">
             <span className="text-primary">What Our Clients</span> Say About Our
@@ -55,8 +66,8 @@ function ClientsSay() {
           modules={[Pagination, Navigation]}
         >
           {reviews.map((item) => (
-            <SwiperSlide key={item.id} className="py-10">
-              <Review key={item.id} reviewItem={item} />
+            <SwiperSlide key={item._id} className="py-10">
+              <Review key={item._id} reviewItem={item} />
             </SwiperSlide>
           ))}
         </Swiper>

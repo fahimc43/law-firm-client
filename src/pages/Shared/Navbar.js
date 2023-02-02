@@ -6,6 +6,7 @@ import auth from "../../firebase.init";
 
 function Navbar() {
   const [user] = useAuthState(auth);
+
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
@@ -18,15 +19,17 @@ function Navbar() {
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/review">Review</Link>
+        <a href="#review">Review</a>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
-      </li>
-      <li>
+        <Link to="/about">Consultation</Link>
+        <a href="#consultation">Consultation</a>
+      </li> */}
+      {/* <li>
         <Link to="/about">About</Link>
-      </li>
+      </li> */}
       {user && (
         <li>
           <Link to="/dashboard">Dashboard</Link>
@@ -34,7 +37,31 @@ function Navbar() {
       )}
       {user ? (
         <li>
-          <button onClick={logout}>Sign out</button>
+          <>
+            <div className="dropdown dropdown-hover">
+              <div className="avatar online placeholder">
+                <div className="bg-neutral-focus text-neutral-content mask mask-squircle w-8 dropdown dropdown-hover">
+                  <span className="text-lg capitalize">
+                    {user?.displayName.slice(0, 2)}
+                  </span>
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu py-1 px-3 shadow bg-base-100 rounded-box w-48 mt-40 md:mt-56 md:-ml-36"
+              >
+                <li>
+                  <span>{user?.displayName}</span>
+                </li>
+                <li>
+                  <Link to="/dashboard/review">Add your review</Link>
+                </li>
+                <li>
+                  <button onClick={logout}>Sign out</button>
+                </li>
+              </ul>
+            </div>
+          </>
         </li>
       ) : (
         <li>

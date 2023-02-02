@@ -27,9 +27,17 @@ function Dashboard() {
                 <Link to="/dashboard/review">My review</Link>
               </li>
               {admin && (
-                <li>
-                  <Link to="/dashboard/users">All users</Link>
-                </li>
+                <>
+                  <li>
+                    <Link to="/dashboard/users">All users</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/services">Add Service</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/manageService">Manage Service</Link>
+                  </li>
+                </>
               )}
             </ul>
           </div>
