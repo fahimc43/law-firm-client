@@ -107,6 +107,12 @@ function CheckoutForm({ booking }) {
         <h4 className="py-3 text-base font-medium">
           Input your Online Card Details..
         </h4>
+        <div className=" bg-slate-600 text-yellow-50 px-3 py-1 mb-3">
+          <p>Stripe test card detail...</p>
+          <pre>Mastercard: 5555555555554444</pre>
+          <pre>CVC: Any 3 digits</pre>
+          <pre>Date: Any future date</pre>
+        </div>
         <form onSubmit={handleSubmit}>
           <CardElement
             className=" py-3 px-1 rounded-lg border-2 border-primary"

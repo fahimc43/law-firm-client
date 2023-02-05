@@ -52,6 +52,11 @@ function Login() {
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className=" text-center text-2xl font-bold">Login</h2>
+          <div className=" bg-slate-700 text-yellow-50 px-3 py-1">
+            <p>Login Test email...</p>
+            <pre>Email: admin@hotmail.com</pre>
+            <pre>Password: bd@1234</pre>
+          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">

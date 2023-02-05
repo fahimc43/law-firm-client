@@ -7,12 +7,15 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../src/firebase.init";
 import Loading from "../Shared/Loading";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function SignUp() {
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  let navigate = useNavigate();
 
   const [token] = useToken(user);
 
@@ -22,23 +25,17 @@ function SignUp() {
     handleSubmit,
   } = useForm();
 
-  // console.log("data inside useToken", token);
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    if (token) {
-      navigate("/appointment");
-    }
-  }, [navigate, token]);
+  console.log("data inside user", user);
+  console.log("data inside token", token);
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-  };
 
-  if (loading || updating) {
-    return <Loading />;
-  }
+    // if (update) {
+    //   navigate("/");
+    // }
+  };
 
   let signInError;
   if (error || updateError) {
@@ -49,10 +46,21 @@ function SignUp() {
     );
   }
 
-  // if (user) {
-  //   console.log(user);
-  // }
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, token]);
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, navigate, from]);
+
+  if (loading || updating) {
+    return <Loading />;
+  }
   return (
     <div className="flex h-screen justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">

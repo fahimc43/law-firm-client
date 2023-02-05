@@ -31,7 +31,7 @@ function Navbar() {
               <div className="avatar online placeholder">
                 <div className="bg-neutral-focus text-neutral-content mask mask-squircle w-8 dropdown dropdown-hover">
                   <span className="text-lg capitalize">
-                    {user?.displayName.slice(0, 2)}
+                    {user?.displayName?.slice(0, 2)}
                   </span>
                 </div>
               </div>
