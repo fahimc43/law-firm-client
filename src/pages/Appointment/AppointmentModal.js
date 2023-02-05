@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import { toast } from "react-toastify";
 
 function AppointmentModal({ serviceItem, date, setServiceItem, refetch }) {
-  const { _id, name, slots } = serviceItem;
+  const { _id, name, slots, price } = serviceItem;
   const [user] = useAuthState(auth);
   const formattedDate = format(date, "PP");
 
@@ -17,12 +17,13 @@ function AppointmentModal({ serviceItem, date, setServiceItem, refetch }) {
       serviceItem: name,
       date: formattedDate,
       slot,
+      price,
       clientName: user.displayName,
       clientEmail: user.email,
       phone: e.target.phone.value,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://law-firm-server-1.onrender.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,7 +32,6 @@ function AppointmentModal({ serviceItem, date, setServiceItem, refetch }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("booking data", data);
         if (data.success) {
           toast.success(`Appointment is set, ${formattedDate} at ${slot}`);
         } else {

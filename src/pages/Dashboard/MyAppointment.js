@@ -4,19 +4,22 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function MyAppointment() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const { data, isLoading } = useQuery(["myAppointment", navigate], () =>
-    fetch(`http://localhost:5000/booking?client=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://law-firm-server-1.onrender.com/booking?client=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -26,11 +29,11 @@ function MyAppointment() {
     })
   );
 
+  const appointments = data;
+
   if (isLoading) {
     return <Loading />;
   }
-
-  const appointments = data;
 
   return (
     <div>
@@ -44,6 +47,8 @@ function MyAppointment() {
               <th>Service</th>
               <th>Date</th>
               <th>Time</th>
+              <th>Price</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +59,17 @@ function MyAppointment() {
                 <td>{a.serviceItem}</td>
                 <td>{a.date}</td>
                 <td>{a.slot}</td>
+                <td>${a.price}.00</td>
+                <td>
+                  {a.price && !a.paid && (
+                    <Link to={`/dashboard/payment/${a._id}`}>
+                      <button className="btn btn-xs">Pay</button>
+                    </Link>
+                  )}
+                  {a.price && a.paid && (
+                    <span className=" text-green-500 font-medium">PAID</span>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

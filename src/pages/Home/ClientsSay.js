@@ -12,7 +12,9 @@ import Loading from "../Shared/Loading";
 
 function ClientsSay() {
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch("http://localhost:5000/reviewers").then((res) => res.json())
+    fetch("https://law-firm-server-1.onrender.com/reviewers").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {

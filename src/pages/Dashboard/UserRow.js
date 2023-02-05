@@ -5,7 +5,7 @@ function UserRow({ index, user, refetch }) {
   const { email, role } = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/users/admin/${email}`, {
+    fetch(`https://law-firm-server-1.onrender.com/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,8 +26,7 @@ function UserRow({ index, user, refetch }) {
   };
 
   const deleteUser = () => {
-    console.log(email);
-    fetch(`http://localhost:5000/users/${email}`, {
+    fetch(`https://law-firm-server-1.onrender.com/users/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

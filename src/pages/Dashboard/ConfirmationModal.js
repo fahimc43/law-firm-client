@@ -1,12 +1,6 @@
 import React from "react";
 
-function ConfirmationModal({
-  title,
-  message,
-  closeModal,
-  modalData,
-  deletingService,
-}) {
+function ConfirmationModal({ closeModal, modalData, deletingService }) {
   return (
     <div>
       <input type="checkbox" id="confirm-modal" className="modal-toggle" />

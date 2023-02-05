@@ -36,7 +36,7 @@ function MyReview() {
     const img = files[0];
     const formData = new FormData();
     formData.append("image", img);
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgHostKey}`;
+    const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
     fetch(url, {
       method: "POST",
       body: formData,
@@ -53,7 +53,7 @@ function MyReview() {
             image: imgData.data.url,
           };
 
-          fetch("http://localhost:5000/reviewers", {
+          fetch("https://law-firm-server-1.onrender.com/reviewers", {
             method: "POST",
             headers: {
               "content-type": "application/json",

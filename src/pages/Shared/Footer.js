@@ -4,7 +4,7 @@ import ButtonBox from "./ButtonBox";
 
 function Footer() {
   return (
-    <div className=" mt-28">
+    <div className="">
       <div className="min-h-[400px] bg-[#1d1d1d] opacity-95">
         <footer className="footer py-10 px-20">
           <div className=" w-48">

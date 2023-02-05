@@ -19,17 +19,6 @@ function Navbar() {
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
-      {/* <li>
-        <Link to="/review">Review</Link>
-        <a href="#review">Review</a>
-      </li>
-      <li>
-        <Link to="/about">Consultation</Link>
-        <a href="#consultation">Consultation</a>
-      </li> */}
-      {/* <li>
-        <Link to="/about">About</Link>
-      </li> */}
       {user && (
         <li>
           <Link to="/dashboard">Dashboard</Link>
@@ -48,7 +37,7 @@ function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu py-1 px-3 shadow bg-base-100 rounded-box w-48 mt-40 md:mt-56 md:-ml-36"
+                className="dropdown-content menu py-1 px-3 shadow bg-base-100 rounded-box w-48 mt-40 md:mt-52 md:-ml-36"
               >
                 <li>
                   <span>{user?.displayName}</span>

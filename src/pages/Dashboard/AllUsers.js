@@ -9,7 +9,7 @@ function AllUsers() {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("http://localhost:5000/users", {
+    fetch("https://law-firm-server-1.onrender.com/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

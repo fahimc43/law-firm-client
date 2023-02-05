@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
 import ConfirmationModal from "./ConfirmationModal";
 
@@ -11,7 +12,7 @@ function ManageService() {
     isLoading,
     refetch,
   } = useQuery("service", () =>
-    fetch("http://localhost:5000/service", {
+    fetch("https://law-firm-server-1.onrender.com/service", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,8 +25,7 @@ function ManageService() {
   };
 
   const successAction = (deleteItem) => {
-    console.log(deleteItem);
-    fetch(`http://localhost:5000/service/${deleteItem._id}`, {
+    fetch(`https://law-firm-server-1.onrender.com/service/${deleteItem._id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -33,8 +33,11 @@ function ManageService() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setDeletingService(null);
-        refetch();
+        if (data.deletedCount > 0) {
+          setDeletingService(null);
+          refetch();
+          toast.success(`Service ${deleteItem.name} deleted successfully!`);
+        }
       });
   };
 
@@ -57,7 +60,7 @@ function ManageService() {
           </thead>
           <tbody>
             {services.map((s, i) => (
-              <tr>
+              <tr key={i}>
                 <th>{i + 1}</th>
                 <td>{s.name}</td>
                 <td>{s.slots.length}</td>
